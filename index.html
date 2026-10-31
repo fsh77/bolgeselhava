@@ -3,44 +3,55 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f2a5c">
+<meta name="color-scheme" content="light dark">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Hava">
 <title>Hava Raporu</title>
+<script>
+try{var t=localStorage.getItem("hv_tema");document.documentElement.dataset.tema=(t?t==="koyu":matchMedia("(prefers-color-scheme: dark)").matches)?"koyu":"acik"}catch(e){}
+</script>
 <style>
-:root{--m:#1d4ed8;--l:#0f2a5c;--z:#eef2f7;--s:#64748b;--c:#7c3aed}
+:root{--m:#1d4ed8;--l:#0f2a5c;--z:#eef2f7;--s:#64748b;--c:#7c3aed;--yz:#1e293b;--kb:#fff;--sb:#f8fafc;--k:#e2e8f0;--ib:#cbd5e1;--ab:#eff6ff;--ob:#93c5fd;--sd:#3b82f6;--er:#b91c1c;--mn:#2563eb;--mx:#dc2626;--ch:#2563eb;--hg:linear-gradient(140deg,#0f2a5c,#1d4ed8 60%,#38bdf8);--gl:rgba(15,23,42,.06);color-scheme:light}
+:root[data-tema=koyu]{--m:#3b82f6;--l:#bfdbfe;--z:#0b1220;--s:#94a3b8;--c:#a78bfa;--yz:#e2e8f0;--kb:#151e2f;--sb:#1b2638;--k:#2a3750;--ib:#3a4a68;--ab:#16284a;--ob:#3b5fa8;--sd:#3b82f6;--er:#f87171;--mn:#60a5fa;--mx:#f87171;--ch:#60a5fa;--hg:linear-gradient(140deg,#0b1220,#1e3a8a 60%,#0e7490);--gl:rgba(0,0,0,.4);color-scheme:dark}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--z);color:#1e293b;line-height:1.45;padding:10px 10px 30px;font-size:15px}
+body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--z);color:var(--yz);line-height:1.45;padding:0 10px calc(30px + env(safe-area-inset-bottom));font-size:15px;min-height:100vh}
 .w{max-width:760px;margin:0 auto}
-header{background:linear-gradient(140deg,#0f2a5c,#1d4ed8 60%,#38bdf8);color:#fff;border-radius:16px;padding:16px 16px 14px;margin-bottom:12px}
+header{background:var(--hg);color:#fff;border-radius:0 0 16px 16px;padding:calc(16px + env(safe-area-inset-top)) 16px 14px;margin:0 -10px 12px}
 .r{display:flex;justify-content:space-between;align-items:center;gap:10px}
 h1{font-size:22px}
-#yen{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:10px;font-size:18px;padding:6px 12px}
+#yen,#tm{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:10px;font-size:18px;padding:6px 12px}
+.hb{display:flex;gap:8px}
 .alt{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .b{background:rgba(255,255,255,.17);border:1px solid rgba(255,255,255,.3);border-radius:99px;padding:2px 10px;font-size:12px}
 .b.g{background:#16a34a}.b.o{background:#b45309}
-.kart{background:#fff;border-radius:14px;padding:14px;margin-bottom:12px;box-shadow:0 2px 8px rgba(15,23,42,.06)}
+.kart{background:var(--kb);border-radius:14px;padding:14px;margin-bottom:12px;box-shadow:0 2px 8px var(--gl)}
 h2{font-size:16px;color:var(--l);margin-bottom:10px}
 details.kart>summary{font-weight:700;color:var(--l);cursor:pointer;font-size:16px}
-input{width:100%;font-size:16px;padding:10px;border:1px solid #cbd5e1;border-radius:10px;margin-top:8px}
+input{width:100%;font-size:16px;padding:10px;border:1px solid var(--ib);border-radius:10px;margin-top:8px;background:var(--kb);color:var(--yz)}
 button{font:inherit;cursor:pointer}
 .bt{display:flex;gap:8px;margin-top:8px}
-.bt button{flex:1;padding:10px;border-radius:10px;border:0;background:#e2e8f0;font-weight:600}
+.bt button{flex:1;padding:10px;border-radius:10px;border:0;background:var(--k);color:var(--yz);font-weight:600}
 .bt button.p{background:var(--m);color:#fff}
-.hm{color:#b91c1c;font-size:13px;margin-top:6px}
+.hm{color:var(--er);font-size:13px;margin-top:6px}
 .ipucu{color:var(--s);font-size:12.5px;margin-top:8px}
-.kr{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid #e2e8f0;border-radius:10px;margin-top:8px}
-.kr.a{border-color:var(--m);background:#eff6ff}
+.kr{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--k);border-radius:10px;margin-top:8px}
+.kr.a{border-color:var(--m);background:var(--ab)}
 .kr .ad{flex:1;min-width:0}.kr .ad b{display:block}.kr .ad small{color:var(--s)}
 .kr button{border:0;background:none;font-size:20px;padding:6px}
 .gu{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .bi{font-size:52px}.bs{font-size:50px;font-weight:700;color:var(--l);line-height:1}
 .his{color:var(--s);font-size:14px;margin-top:4px}
 .kg{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:14px}
-.c{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:7px 10px}
+.c{background:var(--sb);border:1px solid var(--k);border-radius:10px;padding:7px 10px}
 .c .h{font-size:11.5px;color:var(--s)}.c .v{font-size:15px;font-weight:600}
 .ok{display:inline-block}
 .lst{display:flex;flex-direction:column;gap:7px}
-details.sr{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px}
-details.sr[open]{background:#fff;border-color:#93c5fd}
-details.sr.simdi{background:#eff6ff;border-color:#3b82f6}
+details.sr{background:var(--sb);border:1px solid var(--k);border-radius:12px}
+details.sr[open]{background:var(--kb);border-color:var(--ob)}
+details.sr.simdi{background:var(--ab);border-color:var(--sd)}
 details.sr.gecti:not([open]){opacity:.55}
 details.sr>summary{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;padding:8px 12px;list-style:none;cursor:pointer}
 details.sr>summary::-webkit-details-marker{display:none}
@@ -54,18 +65,18 @@ details[open]>summary .ar{transform:rotate(180deg)}
 .rz{background:var(--m);color:#fff;font-size:10px;font-weight:700;border-radius:99px;padding:1px 8px}
 .mn{flex:1 1 100%;display:flex;flex-wrap:wrap;gap:2px 12px;font-size:12px;color:var(--s)}
 .mn b{color:var(--l)}
-.dt{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;padding:10px 12px 12px;border-top:1px dashed #e2e8f0}
+.dt{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;padding:10px 12px 12px;border-top:1px dashed var(--k)}
 .in{padding:0 8px 10px}.in .lst{gap:6px}
-.yb{font-size:13px;font-weight:700;color:var(--l);padding:8px 12px 6px;border-top:1px dashed #e2e8f0}
-.ozet{font-size:13.5px;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:10px;padding:8px 12px;margin-bottom:10px}
+.yb{font-size:13px;font-weight:700;color:var(--l);padding:8px 12px 6px;border-top:1px dashed var(--k)}
+.ozet{font-size:13.5px;background:var(--sb);border:1px dashed var(--ib);border-radius:10px;padding:8px 12px;margin-bottom:10px}
 .nt{font-size:12px;color:var(--s);text-align:center;margin-top:8px}
-.min{color:#2563eb}.mak{color:#dc2626}
+.min{color:var(--mn)}.mak{color:var(--mx)}
 .uv{padding:1px 8px;border-radius:99px;color:#fff;font-size:12px;font-weight:600}
 .u0{background:#10b981}.u1{background:#f59e0b}.u2{background:#f97316}.u3{background:#ef4444}.u4{background:#b91c1c}
-select{width:100%;font-size:16px;padding:9px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;margin-bottom:6px}
+select{width:100%;font-size:16px;padding:9px;border:1px solid var(--ib);border-radius:10px;background:var(--kb);color:var(--yz);margin-bottom:6px}
 #ro{font-size:13.5px;font-weight:600;color:var(--l);min-height:20px;margin-bottom:2px}
 svg{width:100%;height:auto;touch-action:pan-y;display:block}
-.tk{font-size:11px;fill:#64748b}.tg{font-size:11.5px;fill:#2563eb;font-weight:700}
+.tk{font-size:11px;fill:var(--s)}.tg{font-size:11.5px;fill:var(--mn);font-weight:700}
 .bos{text-align:center;color:var(--s);padding:30px 10px}
 @media(min-width:560px){.kg,.dt{grid-template-columns:repeat(3,1fr)}}
 </style>
@@ -73,7 +84,7 @@ svg{width:100%;height:auto;touch-action:pan-y;display:block}
 <body>
 <div class="w">
 <header>
-  <div class="r"><h1 id="bas">🌤️ Hava Raporu</h1><button id="yen" onclick="yukle()" title="Yenile">🔄</button></div>
+  <div class="r"><h1 id="bas">🌤️ Hava Raporu</h1><div class="hb"><button id="tm" onclick="tema()" title="Gece/Gündüz">🌙</button><button id="yen" onclick="yukle()" title="Yenile">🔄</button></div></div>
   <div class="alt" id="alt"></div>
 </header>
 
@@ -92,6 +103,7 @@ svg{width:100%;height:auto;touch-action:pan-y;display:block}
 
 <script>
 const $=s=>document.querySelector(s);
+const mq=matchMedia("(prefers-color-scheme: dark)");
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const dep={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 const W={0:["☀️","Açık"],1:["🌤️","Az bulutlu"],2:["⛅","Parçalı bulutlu"],3:["☁️","Kapalı"],45:["🌫️","Sis"],48:["🌫️","Kırağılı sis"],51:["🌦️","Hafif çisenti"],53:["🌦️","Çisenti"],55:["🌧️","Yoğun çisenti"],56:["🌧️","Dondurucu çisenti"],57:["🌧️","Dondurucu çisenti"],61:["🌦️","Hafif yağmur"],63:["🌧️","Yağmurlu"],65:["🌧️","Şiddetli yağmur"],66:["🌧️","Dondurucu yağmur"],67:["🌧️","Dondurucu yağmur"],71:["🌨️","Hafif kar"],73:["🌨️","Kar"],75:["❄️","Yoğun kar"],77:["❄️","Kar taneleri"],80:["🌦️","Hafif sağanak"],81:["🌧️","Sağanak"],82:["⛈️","Şiddetli sağanak"],85:["🌨️","Kar sağanağı"],86:["❄️","Yoğun kar sağanağı"],95:["⛈️","Gök gürültülü fırtına"],96:["⛈️","Dolulu fırtına"],99:["⛈️","Şiddetli dolulu fırtına"]};
@@ -110,6 +122,24 @@ const CUR="temperature_2m,relative_humidity_2m,apparent_temperature,is_day,preci
 const HR="temperature_2m,relative_humidity_2m,apparent_temperature,dew_point_2m,precipitation_probability,precipitation,weather_code,pressure_msl,cloud_cover,visibility,wind_speed_10m,wind_direction_10m,wind_gusts_10m,uv_index,is_day";
 const DY="weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,uv_index_max,precipitation_sum,precipitation_hours,precipitation_probability_max,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant";
 const VARS=[["temperature_2m","🌡️ Sıcaklık","°C"],["apparent_temperature","🌡️ Hissedilen","°C"],["precipitation_probability","☔ Yağış olasılığı","%"],["precipitation","🌧️ Yağış","mm"],["wind_speed_10m","💨 Rüzgar","km/h"],["wind_gusts_10m","🌪️ Hamle","km/h"],["relative_humidity_2m","💧 Nem","%"],["cloud_cover","☁️ Bulutluluk","%"],["pressure_msl","🔽 Basınç","hPa"],["uv_index","🕶️ UV","" ]];
+
+/* ───────── tema ───────── */
+const koyuMu=()=>{const t=dep.get("hv_tema");return t?t==="koyu":mq.matches};
+function temaUygula(){const k=koyuMu();document.documentElement.dataset.tema=k?"koyu":"acik";$("#tm").textContent=k?"☀️":"🌙";$("meta[name=theme-color]").content=k?"#0b1220":"#0f2a5c"}
+function tema(){dep.set("hv_tema",koyuMu()?"acik":"koyu");temaUygula()}
+mq.addEventListener&&mq.addEventListener("change",()=>{if(!dep.get("hv_tema"))temaUygula()});
+temaUygula();
+
+/* ───────── uygulama simgesi + manifest ───────── */
+(function(){try{
+  const c=document.createElement("canvas");c.width=c.height=512;const x=c.getContext("2d");
+  const g=x.createLinearGradient(0,0,512,512);g.addColorStop(0,"#0f2a5c");g.addColorStop(.6,"#1d4ed8");g.addColorStop(1,"#38bdf8");
+  x.fillStyle=g;x.fillRect(0,0,512,512);x.font="290px serif";x.textAlign="center";x.textBaseline="middle";x.fillText("🌤️",256,280);
+  const u=c.toDataURL("image/png"),ek=(r,h)=>{const l=document.createElement("link");l.rel=r;l.href=h;document.head.appendChild(l)};
+  ek("icon",u);ek("apple-touch-icon",u);
+  const m={name:"Hava Raporu",short_name:"Hava",start_url:location.href.split("#")[0],display:"standalone",background_color:"#0b1220",theme_color:"#0f2a5c",icons:[{src:u,sizes:"512x512",type:"image/png",purpose:"any"}]};
+  ek("manifest",URL.createObjectURL(new Blob([JSON.stringify(m)],{type:"application/manifest+json"})));
+}catch(e){}})();
 
 /* ───────── konumlar (cihazda kalıcı) ───────── */
 let locs=[],sel=0,D=null,NOWI=-1;
@@ -228,12 +258,12 @@ function grafik(){
   if(lo<0&&Math.min(...y)>=0)lo=0;
   const X=i=>pl+i/(N-1)*gw,Y=x=>pt+(1-(x-lo)/(hi-lo))*gh;
   let s="";
-  for(let q=0;q<5;q++){const val=lo+(hi-lo)*q/4,yy=Y(val);s+=`<line x1="${pl}" y1="${yy}" x2="${pl+gw}" y2="${yy}" stroke="#e2e8f0"/><text x="${pl-6}" y="${yy+4}" text-anchor="end" class="tk">${n(val,hi-lo<10?1:0)}</text>`}
+  for(let q=0;q<5;q++){const val=lo+(hi-lo)*q/4,yy=Y(val);s+=`<line x1="${pl}" y1="${yy}" x2="${pl+gw}" y2="${yy}" style="stroke:var(--k)"/><text x="${pl-6}" y="${yy+4}" text-anchor="end" class="tk">${n(val,hi-lo<10?1:0)}</text>`}
   const pts=y.map((a,i)=>`${X(i).toFixed(1)},${Y(a).toFixed(1)}`).join(" ");
-  s+=`<polygon points="${pl},${pt+gh} ${pts} ${pl+gw},${pt+gh}" fill="#2563eb" fill-opacity=".12"/><polyline points="${pts}" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linejoin="round"/>`;
-  H.time.forEach((t,i)=>{if(t.slice(11,13)==="00")s+=`<line x1="${X(i)}" y1="${pt+gh}" x2="${X(i)}" y2="${pt+gh+7}" stroke="#2563eb"/><text x="${X(i)}" y="${pt+gh+22}" text-anchor="middle" class="tg">${kisa(t)}</text>`});
-  if(NOWI>=0)s+=`<line x1="${X(NOWI)}" y1="${pt}" x2="${X(NOWI)}" y2="${pt+gh}" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6 4"/><text x="${X(NOWI)}" y="${pt-8}" text-anchor="middle" style="font-size:11px;font-weight:700;fill:#7c3aed">ŞİMDİ</text>`;
-  s+=`<line id="cl" x1="0" y1="${pt}" x2="0" y2="${pt+gh}" stroke="#0f2a5c" stroke-width="1.5" visibility="hidden"/>`;
+  s+=`<polygon points="${pl},${pt+gh} ${pts} ${pl+gw},${pt+gh}" style="fill:var(--ch)" fill-opacity=".12"/><polyline points="${pts}" fill="none" style="stroke:var(--ch)" stroke-width="2.5" stroke-linejoin="round"/>`;
+  H.time.forEach((t,i)=>{if(t.slice(11,13)==="00")s+=`<line x1="${X(i)}" y1="${pt+gh}" x2="${X(i)}" y2="${pt+gh+7}" style="stroke:var(--ch)"/><text x="${X(i)}" y="${pt+gh+22}" text-anchor="middle" class="tg">${kisa(t)}</text>`});
+  if(NOWI>=0)s+=`<line x1="${X(NOWI)}" y1="${pt}" x2="${X(NOWI)}" y2="${pt+gh}" style="stroke:var(--c)" stroke-width="2" stroke-dasharray="6 4"/><text x="${X(NOWI)}" y="${pt-8}" text-anchor="middle" style="font-size:11px;font-weight:700;fill:var(--c)">ŞİMDİ</text>`;
+  s+=`<line id="cl" x1="0" y1="${pt}" x2="0" y2="${pt+gh}" style="stroke:var(--l)" stroke-width="1.5" visibility="hidden"/>`;
   const svg=$("#svg");svg.innerHTML=s;
   const mv=e=>{
     const r=svg.getBoundingClientRect(),x=(e.clientX-r.left)/r.width*Wd;
